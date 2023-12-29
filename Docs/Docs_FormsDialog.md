@@ -58,7 +58,9 @@ Show-TextBoxDialog -Title "Título de la ventana" -message "Mensaje del cuadro d
 ```
 
 ### Salida
-- El texto ingresado en el cuadro de texto se guarda en la variable global ``$TextBoxValue``
+- El texto ingresado en el cuadro de texto se guarda en la variable global ``$TextBoxValue`` si el boton es pulsado
+- Si se pulsa el botón, la misma función devuelve el resultado ``OK``
+- Si se cierra la ventana, la misma función devuelve el resultado ``Cancel``
 
 
 
