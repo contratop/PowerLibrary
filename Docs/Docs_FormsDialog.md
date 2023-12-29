@@ -3,10 +3,14 @@
 ## Indice
 - [Documentación de la librería FormsDialog](#documentación-de-la-librería-formsdialog)
   - [Indice](#indice)
+- [DialogBox Custom](#dialogbox-custom)
   - [Show-SimpleTextBox](#show-simpletextbox)
 
   - [Show-TextBoxDialog](#show-textboxdialog)
+  
+  - [Show-ComboboxDialog](#show-comboboxdialog)
 
+- [DialogBox Built-In de Windows](#dialogbox-built-in-de-windows)
   - [Show-ErrorMessage](#show-errormessage)
 
   - [Show-WarningMessage](#show-warningmessage)
@@ -15,17 +19,23 @@
 
   - [Show-QuestionMessage](#show-questionmessage)
 
-
+# DialogBox Custom
 ## Show-SimpleTextBox
 Esta función muestra un cuadro de texto simple en una ventana que puedes cerrar
 
 ### Parametros
-- `Title` **(Obligatorio)**: Título de la ventana
-- `message` **(Obligatorio)**: Texto que se muestra en el cuadro de texto
+- `Title` | **(Obligatorio)** **``[String]``**: Título de la ventana
+- `message` | **(Obligatorio)** **``[String]``**: Texto que se muestra en el cuadro de texto
+- `dialogcolor` | **``[HexColor]``**: Color de la ventana
 
 ### Uso
+#### Uso Básico
 ```powershell
 Show-SimpleTextBox -Title "Título de la ventana" -message "Texto del cuadro de texto"
+```
+##### Uso Completo
+```powershell
+Show-SimpleTextBox -Title "Título de la ventana" -message "Texto del cuadro de texto" -dialogcolor "#FF0000"
 ```
 
 ### Salida
@@ -41,10 +51,12 @@ No contiene salidas especiales, la ejecuccion del codigo se detiene hasta que se
 Esta función muestra un cuadro de dialogo con un mensaje, un cuadro de texto y un botón
 
 ### Parametros
-- `Title` **(Obligatorio)**: Título de la ventana
-- `message` **(Obligatorio)**: Mensaje que se muestra en el cuadro de dialogo
-- `defaultlabel`: Texto por defecto del cuadro de texto
-- `buttonlabel`: Texto del botón
+- `Title` | **(Obligatorio)** **``[String]``**: Título de la ventana
+- `message` | **(Obligatorio)** **``[String]``**: Mensaje que se muestra en el cuadro de dialogo
+- `defaultlabel` | **``[String]``**: Texto por defecto del cuadro de texto
+- `buttonlabel` | **``[String]``**: Texto del botón
+- `buttoncolor` | **``[HexColor]``**: Color del botón
+- `dialogcolor` | **``[HexColor]``**: Color de la ventana
 
 ### Uso
 #### Uso Básico
@@ -54,7 +66,7 @@ Show-TextBoxDialog -Title "Título de la ventana" -message "Mensaje del cuadro d
 
 ##### Uso Completo
 ```powershell
-Show-TextBoxDialog -Title "Título de la ventana" -message "Mensaje del cuadro de dialogo" -defaultlabel "Texto por defecto del cuadro de texto" -buttonlabel "Texto del botón"
+Show-TextBoxDialog -Title "Título de la ventana" -message "Mensaje del cuadro de dialogo" -defaultlabel "Texto por defecto del cuadro de texto" -buttonlabel "Texto del botón" -buttoncolor "#FF0000" -dialogcolor "#FF0000"
 ```
 
 ### Salida
@@ -63,12 +75,46 @@ Show-TextBoxDialog -Title "Título de la ventana" -message "Mensaje del cuadro d
 - Si se cierra la ventana, la misma función devuelve el resultado ``Cancel``
 
 
+## Show-ComboboxDialog
+Esta función muestra un cuadro de dialogo con un mensaje, un cuadro combobox y un botón
+
+### Parametros
+- `Title` | **(Obligatorio)** **``[String]``**: Título de la ventana
+- `message` | **(Obligatorio)** **``[String]``**: Mensaje que se muestra en el cuadro de dialogo
+- `options` | **(Obligatorio)** **``[String[Objects]]``**: Conjunto de opciones para el combobox
+- `buttonlabel` | **``[String]``**: Texto del botón
+- `buttoncolor` | **``[HexColor]``**: Color del botón
+- `dialogcolor` | **``[HexColor]``**: Color de la ventana
+- `boxindex` | **``[Int32]``**: Indice del elemento seleccionado por defecto
+- `maxitems` | **``[Int32]``**: Número máximo de elementos que se muestran en el combobox
+
+### Uso
+#### Uso Básico
+```powershell
+$options = @("Opción 1", "Opción 2", "Opción 3")
+
+Show-ComboboxDialog -Title "Título de la ventana" -message "Mensaje del cuadro de dialogo" -options $options
+```
+
+##### Uso Completo
+```powershell
+$options = @("Opción 1", "Opción 2", "Opción 3")
+
+Show-ComboboxDialog -Title "Título de la ventana" -message "Mensaje del cuadro de dialogo" -options $options -buttonlabel "Texto del botón" -buttoncolor "#FF0000" -dialogcolor "#FF0000" -boxindex 0 -maxitems 5
+```
+
+### Salida
+- El texto ingresado en el cuadro de texto se guarda en la variable global ``$ComboboxValue`` si el boton es pulsado y la misma función devuelve el resultado ``OK``
+- Si se cierra la ventana, la misma función devuelve el resultado ``Cancel`` ademas de la variable global ``$ComboboxValue`` con el objeto seleccionado
+
+<br/>
 
 ---
 
+<br/>
 
 
-
+# DialogBox Built-In de Windows
 ## Show-ErrorMessage
 Esta función muestra un cuadro de dialogo con un mensaje de error y un botón para cerrar el mensaje
 
