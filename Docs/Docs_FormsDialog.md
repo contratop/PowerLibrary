@@ -25,7 +25,7 @@ Esta función muestra un cuadro de texto simple en una ventana que puedes cerrar
 
 ### Uso
 ```powershell
-Show-SimpleTextBox -Title "Título de la ventana" -labeltext "Texto del cuadro de texto"
+Show-SimpleTextBox -Title "Título de la ventana" -message "Texto del cuadro de texto"
 ```
 
 ### Salida
