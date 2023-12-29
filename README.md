@@ -11,6 +11,8 @@ Para utilizar las librerías de PowerLibrary, sigue estos pasos:
 3. Navega hasta la carpeta donde clonaste el repositorio o descargastes manualmente el archivo de modulo.
 4. Importa los módulos que necesites utilizando el comando `Import-Module`.
 
+PD: Si te sabes mover, usa Invoke-WebRequest en tu script para descargar el modulo directamente desde GitHub y importarlo directamente.
+
 ## Uso
 
 Una vez que hayas importado los módulos de PowerLibrary, puedes utilizar las funcionalidades que ofrecen en tus scripts de PowerShell. Cada módulo tiene su propia documentación y ejemplos de uso, así que asegúrate de revisar la documentación correspondiente.
