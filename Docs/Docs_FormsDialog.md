@@ -4,31 +4,17 @@
 - [Documentación de la librería FormsDialog](#documentación-de-la-librería-formsdialog)
   - [Indice](#indice)
   - [Show-SimpleTextBox](#show-simpletextbox)
-    - [Parametros](#parametros)
-    - [Uso](#uso)
-    - [Salida](#salida)
+
   - [Show-TextBoxDialog](#show-textboxdialog)
-    - [Parametros](#parametros-1)
-    - [Uso](#uso-1)
-      - [Uso Básico](#uso-básico)
-        - [Uso Completo](#uso-completo)
-    - [Salida](#salida-1)
+
   - [Show-ErrorMessage](#show-errormessage)
-    - [Parametros](#parametros-2)
-    - [Uso](#uso-2)
-    - [Salida](#salida-2)
+
   - [Show-WarningMessage](#show-warningmessage)
-    - [Parametros](#parametros-3)
-    - [Uso](#uso-3)
-    - [Salida](#salida-3)
+
   - [Show-InformationMessage](#show-informationmessage)
-    - [Parametros](#parametros-4)
-    - [Uso](#uso-4)
-    - [Salida](#salida-4)
+
   - [Show-QuestionMessage](#show-questionmessage)
-    - [Parametros](#parametros-5)
-    - [Uso](#uso-5)
-    - [Salida](#salida-5)
+
 
 ## Show-SimpleTextBox
 Esta función muestra un cuadro de texto simple en una ventana que puedes cerrar
