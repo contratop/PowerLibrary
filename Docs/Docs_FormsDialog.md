@@ -70,9 +70,8 @@ Show-TextBoxDialog -Title "Título de la ventana" -message "Mensaje del cuadro d
 ```
 
 ### Salida
-- El texto ingresado en el cuadro de texto se guarda en la variable global ``$TextBoxValue`` si el boton es pulsado
-- Si se pulsa el botón, la misma función devuelve el resultado ``OK``
-- Si se cierra la ventana, la misma función devuelve el resultado ``Cancel``
+- ``$TextBoxValue``: Guarda el texto ingresado en el cuadro de texto
+- `OK` y `Cancel`: Lo devuelve la propia funcion dependiendo si se ha pulsado el boton `OK` o se ha cerrado la ventana `Cancel`
 
 
 ## Show-ComboboxDialog
@@ -104,8 +103,42 @@ Show-ComboboxDialog -Title "Título de la ventana" -message "Mensaje del cuadro 
 ```
 
 ### Salida
-- El texto ingresado en el cuadro de texto se guarda en la variable global ``$ComboboxValue`` si el boton es pulsado y la misma función devuelve el resultado ``OK``
-- Si se cierra la ventana, la misma función devuelve el resultado ``Cancel`` ademas de la variable global ``$ComboboxValue`` con el objeto seleccionado
+- ``$ComboboxValue``: Guarda el objeto seleccionado en el combobox
+- `OK` y `Cancel`: Lo devuelve la propia funcion dependiendo si se ha pulsado el boton `OK` o se ha cerrado la ventana `Cancel`
+
+## Show-ComboboxTextDialog
+Esta función muestra un cuadro de dialogo con un mensaje, un cuadro combobox, un cuadro de texto y un botón
+
+### Parametros
+- `Title` | **(Obligatorio)** **``[String]``**: Título de la ventana
+- `message` | **(Obligatorio)** **``[String]``**: Mensaje que se muestra en el cuadro de dialogo
+- `options` | **(Obligatorio)** **``[String[Objects]]``**: Conjunto de opciones para el combobox
+- `defaultlabel` | **``[String]``**: Texto por defecto del cuadro de texto
+- `buttonlabel` | **``[String]``**: Texto del botón
+- `buttoncolor` | **``[HexColor]``**: Color del botón
+- `dialogcolor` | **``[HexColor]``**: Color de la ventana
+- `boxindex` | **``[Int32]``**: Indice del elemento seleccionado por defecto
+- `maxitems` | **``[Int32]``**: Número máximo de elementos que se muestran en el combobox
+
+### Uso
+#### Uso Básico
+```powershell
+$options = @("Opción 1", "Opción 2", "Opción 3")
+
+Show-ComboboxTextDialog -Title "Título de la ventana" -message "Mensaje del cuadro de dialogo" -options $options
+```
+
+##### Uso Completo
+```powershell
+$options = @("Opción 1", "Opción 2", "Opción 3")
+
+Show-ComboboxTextDialog -Title "Título de la ventana" -message "Mensaje del cuadro de dialogo" -options $options -defaultlabel "Texto por defecto del cuadro de texto" -buttonlabel "Texto del botón" -buttoncolor "#FF0000" -dialogcolor "#FF0000" -boxindex 0 -maxitems 5
+```
+
+### Salida
+- ``$ComboboxValue``: Guarda el objeto seleccionado en el combobox
+- ``$TextBoxValue``: Guarda el texto ingresado en el cuadro de texto
+- `OK` y `Cancel`: Lo devuelve la propia funcion dependiendo si se ha pulsado el boton `OK` o se ha cerrado la ventana `Cancel`
 
 <br/>
 

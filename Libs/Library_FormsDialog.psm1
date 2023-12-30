@@ -151,6 +151,80 @@ function Show-ComboboxDialog {
 
 }
 
+function Show-ComboboxTextDialog{
+    param (
+        [Parameter(Mandatory=$true)]
+        [string]$title,
+
+        [Parameter(Mandatory=$true)]
+        [string]$message,
+
+        [Parameter(Mandatory=$true)]
+        [string[]]$options,
+
+        [string]$defaultlabel,
+
+        [string]$buttonlabel = "Aceptar",
+
+        [string]$buttoncolor = "Control",
+
+        [string]$dialogcolor = "Control",
+
+        [int32]$boxindex = 0,
+
+        [int32]$maxitems = 4
+    )
+
+    $Form = New-Object System.Windows.Forms.Form
+    $Form.Text = $title # CUSTOMIZABLE
+    $Form.FormBorderStyle = 'FixedSingle'
+    $Form.MaximizeBox = $false
+    $Form.Size = New-Object System.Drawing.Size(500, 300)
+    $Form.StartPosition = 'CenterScreen'
+    $Form.BackColor = $dialogcolor # CUSTOMIZABLE
+    
+    $LabelTop = New-Object System.Windows.Forms.Label
+    $LabelTop.Location = New-Object System.Drawing.Point(0, 0)
+    $LabelTop.Size = New-Object System.Drawing.Size(480, 130)
+    $LabelTop.Text = $message
+    $LabelTop.TextAlign = 'MiddleCenter'
+    $LabelTop.Dock = 'Top'
+    $LabelTop.Font = New-Object System.Drawing.Font("Arial", 12)
+
+    $ComboBox = New-Object System.Windows.Forms.ComboBox
+    $ComboBox.Location = New-Object System.Drawing.Point(40, 140)
+    $ComboBox.Size = New-Object System.Drawing.Size(400, 20)
+    $ComboBox.Font = New-Object System.Drawing.Font("Arial", 12)
+    $ComboBox.Items.AddRange($options) # CUSTOMIZABLE
+    $ComboBox.SelectedIndex = $boxindex # CUSTOMIZABLE
+    $ComboBox.MaxDropDownItems = $maxitems # CUSTOMIZABLE
+
+    $TextBox = New-Object System.Windows.Forms.TextBox
+    $TextBox.Location = New-Object System.Drawing.Point(40, 170)
+    $TextBox.Size = New-Object System.Drawing.Size(400, 20)
+    $TextBox.Text = $defaultlabel
+    $TextBox.Font = New-Object System.Drawing.Font("Arial", 12)
+
+    $Button = New-Object System.Windows.Forms.Button
+    $Button.Location = New-Object System.Drawing.Point(60, 200)
+    $Button.Size = New-Object System.Drawing.Size(360, 40)
+    $Button.Text = $buttonlabel
+    #$Button.Dock = 'Bottom'
+    $Button.BackColor = $buttoncolor # CUSTOMIZABLE
+    $Button.DialogResult = [System.Windows.Forms.DialogResult]::OK
+    $Button.Add_Click({
+        $global:ComboboxValue = $ComboBox.SelectedItem
+        $global:TextBoxValue = $TextBox.Text
+    })
+
+    $Form.Controls.Add($ComboBox)
+    $Form.Controls.Add($Button)
+    $Form.Controls.Add($LabelTop)
+    $Form.Controls.Add($TextBox)
+
+    $Form.ShowDialog()
+
+}
 
 ############################################
 ### WINDOWS DIALOGBOXES
