@@ -73,6 +73,8 @@ Show-TextBoxDialog -Title "Título de la ventana" -message "Mensaje del cuadro d
 - ``$TextBoxValue``: Guarda el texto ingresado en el cuadro de texto
 - `OK` y `Cancel`: Lo devuelve la propia funcion dependiendo si se ha pulsado el boton `OK` o se ha cerrado la ventana `Cancel`
 
+---
+
 
 ## Show-ComboboxDialog
 Esta función muestra un cuadro de dialogo con un mensaje, un cuadro combobox y un botón
@@ -106,17 +108,19 @@ Show-ComboboxDialog -Title "Título de la ventana" -message "Mensaje del cuadro 
 - ``$ComboboxValue``: Guarda el objeto seleccionado en el combobox
 - `OK` y `Cancel`: Lo devuelve la propia funcion dependiendo si se ha pulsado el boton `OK` o se ha cerrado la ventana `Cancel`
 
+---
+
 ## Show-ComboboxTextDialog
 Esta función muestra un cuadro de dialogo con un mensaje, un cuadro combobox, un cuadro de texto y un botón
 
 ### Parametros
 - `Title` | **(Obligatorio)** **``[String]``**: Título de la ventana
 - `message` | **(Obligatorio)** **``[String]``**: Mensaje que se muestra en el cuadro de dialogo
+- `dialogcolor` | **``[HexColor]``**: Color de la ventana
 - `options` | **(Obligatorio)** **``[String[Objects]]``**: Conjunto de opciones para el combobox
 - `defaultlabel` | **``[String]``**: Texto por defecto del cuadro de texto
 - `buttonlabel` | **``[String]``**: Texto del botón
 - `buttoncolor` | **``[HexColor]``**: Color del botón
-- `dialogcolor` | **``[HexColor]``**: Color de la ventana
 - `boxindex` | **``[Int32]``**: Indice del elemento seleccionado por defecto
 - `maxitems` | **``[Int32]``**: Número máximo de elementos que se muestran en el combobox
 
@@ -140,10 +144,48 @@ Show-ComboboxTextDialog -Title "Título de la ventana" -message "Mensaje del cua
 - ``$TextBoxValue``: Guarda el texto ingresado en el cuadro de texto
 - `OK` y `Cancel`: Lo devuelve la propia funcion dependiendo si se ha pulsado el boton `OK` o se ha cerrado la ventana `Cancel`
 
+---
+
+## Show-DualButtonDialog
+Esta función muestra un cuadro de dialogo con un mensaje y dos botones
+
+El Boton 1 se posiciona a la izquierda y el Boton 2 a la derecha
+
+### Parametros
+- `Title`| **(Obligatorio)** **``[String]``**: Título de la ventana
+- `message` | **(Obligatorio)** **``[String]``**: Mensaje que se muestra en el cuadro de dialogo
+- `dialogcolor` | **``[HexColor]``**: Color de la ventana
+- `buttonlabel1` | **``[String]``**: Texto del botón 1
+- `buttoncolor1` | **``[HexColor]``**: Color del botón 1
+- `buttonlabel2` | **``[String]``**: Texto del botón 2
+- `buttoncolor2` | **``[HexColor]``**: Color del botón 2
+
+### Uso
+#### Uso Básico
+```powershell
+Show-DualButtonDialog -Title "Titulo" -message "Mensaje"
+```
+
+#### Uso Completo
+```powershell
+Show-DualButtonDialog -Title "Titulo" -message "Mensaje" -dialogcolor "#00AAFF" -buttonlabel1 "Boton 1 WOW" -buttoncolor1 "#00FFAA" -buttonlabel2 "BOTON 2 LOCUROTE"  -buttoncolor2 "#FF00AA"
+```
+
+### Salida
+- ``$ButtonValue``: Devuelve 1 si se presiona el botón 1, y devuelve 2 si se presional el botón 2
+- `OK` y `Cancel`: Lo devuelve la propia función siendo OK si se ha presionado alguno de los dos botones, y Cancel si el cuadro de dialogo se ha cerrado sin pulsar ningún boton
+
+
+
+
+<br/>
+<br/>
 <br/>
 
 ---
 
+<br/>
+<br/>
 <br/>
 
 

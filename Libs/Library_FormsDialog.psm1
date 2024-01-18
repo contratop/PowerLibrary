@@ -226,6 +226,70 @@ function Show-ComboboxTextDialog{
 
 }
 
+function Show-DualButtonDialog{
+    param (
+        [Parameter(Mandatory=$true)]
+        [string]$title,
+
+        [Parameter(Mandatory=$true)]
+        [string]$message,
+
+        [string]$dialogcolor = "Control",
+
+        [string]$buttonlabel1 = "Aceptar",
+        
+        [string]$buttoncolor1 = "Control",
+
+        [string]$buttonlabel2 = "Cancelar",
+
+        [string]$buttoncolor2 = "Control"
+    )
+
+    $Form = New-Object System.Windows.Forms.Form
+    $Form.Text = $title
+    $Form.FormBorderStyle = 'FixedSingle'
+    $Form.MaximizeBox = $false
+    $Form.Size = New-Object System.Drawing.Size(500, 300)
+    $Form.StartPosition = 'CenterScreen'
+    $Form.BackColor = $dialogcolor
+    
+    $LabelTop = New-Object System.Windows.Forms.Label
+    $LabelTop.Location = New-Object System.Drawing.Point(0, 0)
+    $LabelTop.Size = New-Object System.Drawing.Size(480, 180)
+    $LabelTop.Text = $message
+    $LabelTop.TextAlign = 'MiddleCenter'
+    $LabelTop.Dock = 'Top'
+    $LabelTop.Font = New-Object System.Drawing.Font("Arial", 12)
+    
+    $Button = New-Object System.Windows.Forms.Button
+    $Button.Location = New-Object System.Drawing.Point(9, 190)
+    $Button.Size = New-Object System.Drawing.Size(197, 59)
+    $Button.Text = $buttonlabel1
+    $Button.BackColor = $buttoncolor1
+    $Button.DialogResult = [System.Windows.Forms.DialogResult]::OK
+    $Button.Add_Click({
+        $global:ButtonValue = "1"
+    })
+
+    $Button2 = New-Object System.Windows.Forms.Button
+    $Button2.Location = New-Object System.Drawing.Point(278, 190)
+    $Button2.Size = New-Object System.Drawing.Size(197, 59)
+    $Button2.Text = $buttonlabel2
+    $Button2.BackColor = $buttoncolor2
+    $Button2.DialogResult = [System.Windows.Forms.DialogResult]::OK
+    $Button2.Add_Click({
+        $global:ButtonValue = "2"
+    })
+
+
+    $Form.Controls.Add($LabelTop)
+    $Form.Controls.Add($Button)
+    $Form.Controls.Add($Button2)
+    
+    $Form.ShowDialog()
+
+}
+
 ############################################
 ### WINDOWS DIALOGBOXES
 function Show-ErrorMessage {
