@@ -1,8 +1,6 @@
 # Documentación de la librería FormsDialog
 
 ## Indice
-- [Documentación de la librería FormsDialog](#documentación-de-la-librería-formsdialog)
-  - [Indice](#indice)
 - [DialogBox Custom](#dialogbox-custom)
   - [Show-SimpleTextBox](#show-simpletextbox)
 
