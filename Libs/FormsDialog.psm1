@@ -1,5 +1,10 @@
 Add-Type -AssemblyName System.Windows.Forms
 
+if($IsWindows -eq $False){
+    Write-Host "AVISO: Ejecuta esto en Windows, no es compatible con PowerShell Core Linux" -ForegroundColor Yellow
+    break
+}
+
 ### CUSTOM DIALOGBOXES
 function Show-SimpleTextBox {
     param (
